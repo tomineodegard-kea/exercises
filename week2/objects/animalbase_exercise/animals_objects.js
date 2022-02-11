@@ -25,21 +25,26 @@ function prepareObjects(jsonData) {
     // TODO: Create new object with cleaned data - and store that in the allAnimals array
     let name;
     let type;
-    let description;
+    let desc;
     let age;
 
+    // getting out the right values from the objects from the json
     name = jsonObject.fullname.substring(0, jsonObject.fullname.indexOf(" "));
     type = jsonObject.fullname.substring(jsonObject.fullname.lastIndexOf(" ") + 1);
-    description = jsonObject.fullname.substring(jsonObject.fullname.lastIndexOf("the") + 4, jsonObject.fullname.lastIndexOf(" "));
+    desc = jsonObject.fullname.substring(jsonObject.fullname.lastIndexOf("the") + 4, jsonObject.fullname.lastIndexOf(" "));
     age = jsonObject.age;
 
-    const Animal = { name: "", type: "", description: "", age: "" };
+    // create an empty object prototype
+    const Animal = { name: "", type: "", desc: "", age: "" };
 
+    // populate the object prototype
     const animal = Object.create(Animal);
     animal.name = name;
     animal.type = type;
-    animal.description = description;
+    animal.desc = desc;
     animal.age = age;
+
+    allAnimals.push(animal);
 
     console.log(animal);
   });

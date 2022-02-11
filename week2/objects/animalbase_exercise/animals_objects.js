@@ -14,7 +14,7 @@ function loadJSON() {
   fetch("animals.json")
     .then((response) => response.json())
     .then((jsonData) => {
-      // when loaded, prepare objects
+      // When loaded, prepare objects
       prepareObjects(jsonData);
     });
 }
@@ -22,28 +22,24 @@ function loadJSON() {
 function prepareObjects(jsonData) {
   console.log("prepareObjects");
   jsonData.forEach((jsonObject) => {
-    // TODO: Create new object with cleaned data - and store that in the allAnimals array
     let name;
     let type;
     let desc;
     let age;
 
-    // getting out the right values from the objects from the json
-    name = jsonObject.fullname.substring(0, jsonObject.fullname.indexOf(" "));
-    type = jsonObject.fullname.substring(jsonObject.fullname.lastIndexOf(" ") + 1);
-    desc = jsonObject.fullname.substring(jsonObject.fullname.lastIndexOf("the") + 4, jsonObject.fullname.lastIndexOf(" "));
-    age = jsonObject.age;
-
-    // create an empty object prototype
+    // Create an object prototype - name it Animal. This defines the template to store the data.
     const Animal = { name: "", type: "", desc: "", age: "" };
 
-    // populate the object prototype
+    // Creating an object from the prototype. The created object will have the same properties and values as the prototype.
     const animal = Object.create(Animal);
-    animal.name = name;
-    animal.type = type;
-    animal.desc = desc;
-    animal.age = age;
 
+    // Getting the right values from the json by using substring, and assigning that to the object with dot notation
+    animal.name = jsonObject.fullname.substring(0, jsonObject.fullname.indexOf(" "));
+    animal.type = jsonObject.fullname.substring(jsonObject.fullname.lastIndexOf(" ") + 1);
+    animal.desc = jsonObject.fullname.substring(jsonObject.fullname.lastIndexOf("the") + 4, jsonObject.fullname.lastIndexOf(" "));
+    animal.age = jsonObject.age;
+
+    // Pushing the object prototype in to the empty array
     allAnimals.push(animal);
 
     console.log(animal);

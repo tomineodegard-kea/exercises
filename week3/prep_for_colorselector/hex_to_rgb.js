@@ -11,4 +11,4 @@ function hexToRGB(hex) {
   console.log(hexColor);
 }
 
-hexToRGB("c0ffee");
+hexToRGB("#c0ffee");

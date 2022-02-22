@@ -3,7 +3,7 @@
 window.addEventListener("DOMContentLoaded", start);
 
 let allAnimals = [];
-let filter;
+let filter = "*";
 
 // creating the  prototype for all animals:
 const Animal = {
@@ -127,6 +127,7 @@ function displayAnimal(animal) {
 
   // TO DO: Add eventlistner to click on star
   clone.querySelector("[data-field=star]").addEventListener("click", toggleStar);
+
   function toggleStar() {
     console.log("toggleStar");
     if (animal.star) {
